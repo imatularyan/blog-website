@@ -13,11 +13,16 @@
   </head>
   <body>
     <div class="container">
-      <br />
-      <h1 class="mb-4">Edit Article</h1>
-      <form action="/articles/<%=article.id%>?_method=PUT" method="POST">
-        <%- include('form_field') %>
-      </form>
+      <h1 class="container-fluid mb-4 py-2 border-bottom">Edit Article 📝</h1>
+      <div class="card border-0 mt-2">
+        <form
+          action="/articles/<%=article.id%>?_method=PUT"
+          method="POST"
+          class="card-body border rounded-3 p-4 bg-light"
+        >
+          <%- include('form_field') %>
+        </form>
+      </div>
     </div>
   </body>
 </html>

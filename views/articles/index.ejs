@@ -13,34 +13,45 @@
   </head>
   <body>
     <div class="container">
-      <h1 class="mb-4">Bharat Intern Blog Website</h1>
-      <a href="/articles/new" class="btn btn-success">Create Article</a>
-
+      <div
+        class="container-fluid mb-4 py-2 d-flex justify-content-between align-items-center border-bottom"
+      >
+        <h1>Bharat Intern Blog Website</h1>
+        <a href="/articles/new" class="btn btn-outline-success btn-lg"
+          >Write Article 🖌️
+        </a>
+      </div>
       <% articles.forEach(article =>{%>
-      <div class="card mt-4">
+      <div class="card my-3 bg-light">
         <div class="card-body">
           <h4 class="card-title"><%=article.title%></h4>
           <div class="card-subtitle text-muted mb-2">
             <%=article.createdAt.toLocaleDateString() %>
           </div>
-          <div class="card-text"><%=article.description%></div>
-        </div>
-        <div class="m-3 d-flex flex-row justify-content-between">
-          <div>
-            <a href="articles/<%=article.slug%>" class="btn btn-primary"
-              >Read more</a
+          <p class="card-text"><%=article.description%></p>
+
+          <div class="d-flex flex-row justify-content-between">
+            <div>
+              <a
+                href="articles/<%=article.slug%>"
+                class="btn btn-sm btn-primary"
+                >Read more</a
+              >
+              <a
+                href="articles/edit/<%=article.id%>"
+                class="btn btn-sm btn-outline-secondary"
+                >Edit 📝</a
+              >
+            </div>
+            <form
+              action="/articles/<%=article.id%>?_method=DELETE"
+              method="POST"
             >
-            <a href="articles/edit/<%article.id%>" class="btn btn-secondary"
-              >Edit</a
-            >
+              <button type="submit" class="btn btn-sm btn-danger">
+                Delete 🗑️
+              </button>
+            </form>
           </div>
-          <form
-            action="/articles/<%=article.id%>?_method=DELETE"
-            method="POST"
-            class=""
-          >
-            <button type="submit" class="btn btn-danger">Delete</button>
-          </form>
         </div>
       </div>
       <%})%>

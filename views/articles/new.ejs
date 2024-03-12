@@ -13,9 +13,16 @@
   </head>
   <body>
     <div class="container">
-      <br />
-      <h1 class="mb-4">Create New Article</h1>
-      <form action="/articles" method="POST"><%- include('form_field') %></form>
+      <h1 class="container-fluid mb-4 py-2 border-bottom">
+        Create New Article
+      </h1>
+      <form
+        action="/articles"
+        method="POST"
+        class="card-body border rounded-3 p-4 bg-light p-4"
+      >
+        <%- include('form_field') %>
+      </form>
     </div>
   </body>
 </html>

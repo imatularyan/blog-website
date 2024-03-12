@@ -7,12 +7,12 @@ router.get("/new", (req, res) => {
 });
 
 router.get("/edit/:id", async (req, res) => {
-  const article = await Article.findById(req.params.id);
+  const article = await Article.findById(req?.params?.id);
   res.render("articles/edit", { article: article });
 });
 
 router.get("/:slug", async (req, res) => {
-  const article = await Article.findOne({ slug: req.params.slug });
+  const article = await Article.findOne({ slug: req?.params?.slug });
   if (article == null) res.redirect("/");
   res.render("articles/show", { article: article });
 });
@@ -31,7 +31,7 @@ router.post(
 router.put(
   "/:id",
   async (req, res, next) => {
-    req.article = await Article.findById(req.params.id);
+    req.article = await Article.findById(req?.params?.id);
     next();
   },
   saveArticle("edit")
@@ -39,19 +39,19 @@ router.put(
 
 // delete post
 router.delete("/:id", async (req, res) => {
-  await Article.findByIdAndDelete(req.params.id);
+  await Article.findByIdAndDelete(req?.params?.id);
   res.redirect("/");
 });
 
 function saveArticle(path) {
   return async (req, res) => {
-    let article = req.article;
-    article.title = req.body.title;
-    article.description = req.body.description;
+    let article = req?.article;
+    article.title = req?.body?.title;
+    article.description = req?.body?.description;
     article.markdown = req.body.markdown;
     try {
-      article = await article.save();
-      res.redirect(`/articles/${article.slug}`);
+      article = await article?.save();
+      res.redirect(`/articles/${article?.slug}`);
     } catch (e) {
       res.render(`articles/${path}`, { article: article });
     }
