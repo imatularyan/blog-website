@@ -48,7 +48,7 @@ This Blog Website is a full-stack web application that allows users to read, wri
 1. **Clone the repository**
 
 ```sh
-git clone
+git clone https://github.com/imatularyan/blog-website.git
 cd blog-website
 ```
 
