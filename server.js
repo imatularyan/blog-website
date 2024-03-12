@@ -4,7 +4,7 @@ const Article = require("./models/article");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const dotenv = require("dotenv").config();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 const app = express();
 
 const username = process.env.MONGODB_USERNAME;
@@ -27,5 +27,5 @@ app.get("/", async (req, res) => {
 app.use("/articles", articleRouter);
 
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost${port}`);
+  console.log(`Server is running on http://localhost:${port}`);
 });
