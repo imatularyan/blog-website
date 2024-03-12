@@ -17,6 +17,7 @@ router.get("/:slug", async (req, res) => {
   res.render("articles/show", { article: article });
 });
 
+// create post
 router.post(
   "/",
   (req, res, next) => {
@@ -26,6 +27,7 @@ router.post(
   saveArticle("new")
 );
 
+// edit post
 router.put(
   "/:id",
   async (req, res, next) => {
@@ -35,6 +37,7 @@ router.put(
   saveArticle("edit")
 );
 
+// delete post
 router.delete("/:id", async (req, res) => {
   await Article.findByIdAndDelete(req.params.id);
   res.redirect("/");
